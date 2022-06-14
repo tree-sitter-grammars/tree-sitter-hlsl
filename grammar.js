@@ -1,11 +1,12 @@
-const C = require("tree-sitter-c/grammar")
+const CPP = require("tree-sitter-cpp/grammar")
 
-module.exports = grammar(C, {
-    name: 'glsl',
+module.exports = grammar(CPP, {
+    name: 'hlsl',
 
     conflicts: ($, original) => original.concat([
         [$.function_definition, $.declaration],
-        [$.declaration]
+        [$.declaration],
+        [/*$.template_function,*/ $.template_type, $._expression],
     ]),
 
     rules: {
@@ -135,3 +136,11 @@ module.exports = grammar(C, {
         qualifier: ($) => choice("shared", $.identifier, seq($.identifier, "=", $._expression)),
     }
 });
+
+function commaSep(rule) {
+    return optional(commaSep1(rule));
+}
+
+function commaSep1(rule) {
+    return seq(rule, repeat(seq(',', rule)));
+}
