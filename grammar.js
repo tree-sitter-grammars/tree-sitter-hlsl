@@ -14,80 +14,51 @@ module.exports = grammar(CPP, {
 
         function_definition: ($, original) => seq(
             optional(
-                seq(
-                    'subroutine',
-                    optional(
-                        seq('(', optional($.identifier), repeat(seq(',', $.identifier)), ')')
-                    ),
-                )
+                $.entry_point_attribute,
             )
             , original
         ),
 
         declaration: ($, original) =>
-            choice(seq(choice("invariant", "precise"), $.identifier, ";"), seq(
+            seq(
                 repeat(
                     choice(
                         'in',
                         'out',
                         'inout',
-                        'uniform',
-                        'shared',
-                        'attribute',
-                        'varying',
-                        'buffer',
-                        'coherent',
-                        'readonly',
-                        'writeonly',
-                        'precision',
-                        'highp',
-                        'mediump',
-                        'lowp',
-                        'subroutine',
-                        'centroid',
-                        'sample',
-                        'patch',
-                        'smooth',
-                        'flat',
-                        'noperspective',
-                        'invariant',
-                        'precise',
-                        $.extension_storage_class,
-                        $.layout_specification,
+                        $.qualifiers,
                     )
-                ), choice(seq($.identifier, $.field_declaration_list, optional($.identifier), ";"), original)
-            )),
+                ),
+                choice(
+                    seq(
+                        $.identifier,
+                        //optional(seq(":", $._expression)),
+                        $.field_declaration_list,
+                        optional($.identifier),
+                        ";"
+                    ),
+                    original,
+                )
+            ),
+
+        entry_point_attribute: $ =>
+            seq(
+                '[',
+                $._expression,
+                ']',
+            ),
 
         field_declaration: ($, original) =>
             seq(
-                repeat(choice(
+                repeat(prec(2, choice(
+                    $.attribute_declaration,
                     'in',
                     'out',
                     'inout',
-                    'uniform',
-                    'shared',
-                    'attribute',
-                    'varying',
-                    'buffer',
-                    'coherent',
-                    'readonly',
-                    'writeonly',
-                    'precision',
-                    'highp',
-                    'mediump',
-                    'lowp',
-                    'subroutine',
-                    'centroid',
-                    'sample',
-                    'patch',
-                    'smooth',
-                    'flat',
-                    'noperspective',
-                    'invariant',
-                    'precise',
-                    $.extension_storage_class,
-                    $.layout_specification,
-                )), original),
+                    $.qualifiers,
+                ))),
+                original,
+            ),
 
         parameter_declaration: ($, original) =>
             seq(
@@ -96,51 +67,44 @@ module.exports = grammar(CPP, {
                         'in',
                         'out',
                         'inout',
-                        'uniform',
-                        'shared',
-                        'attribute',
-                        'varying',
-                        'buffer',
-                        'coherent',
-                        'readonly',
-                        'writeonly',
-                        'centroid',
-                        'sample',
-                        'patch',
-                        'smooth',
-                        'flat',
-                        'noperspective',
-                        'precise',
-                        $.layout_specification,
+                        $.qualifiers,
                     )
-                ), original
+                ),
+                original,
+                optional(seq(":", $._expression)),
             ),
 
-        extension_storage_class: _ => choice(
-            'rayPayloadEXT',
-            'rayPayloadInEXT',
-            'hitAttributeEXT',
-            'callableDataEXT',
-            'callableDataInEXT',
-            'shaderRecordEXT',
-            'rayPayloadNV',
-            'rayPayloadInNV',
-            'hitAttributeNV',
-            'callableDataNV',
-            'callableDataInNV',
-            'shaderRecordNV',
+        _non_case_statement: ($, original) => choice($.discard_statement, original),
+
+        discard_statement: _ => seq('discard', ';'),
+        qualifiers: _ => choice(
+            'nointerpolation',
+            'precise',
+            'shared',
+            'groupshared',
+            'uniform',
+            'row_major',
+            'column_major',
         ),
 
-        layout_specification: ($) => seq("layout", $.layout_qualifiers),
-        layout_qualifiers: ($) => seq("(", $.qualifier, repeat(seq(",", $.qualifier)), ")"),
-        qualifier: ($) => choice("shared", $.identifier, seq($.identifier, "=", $._expression)),
+        _type_specifier: ($, original) => choice(
+            $.cbuffer_specifier,
+            original
+        ),
+
+        cbuffer_specifier: $ => prec.right(seq(
+            'cbuffer',
+            optional($.attribute_declaration),
+            choice(
+                field('name', $._class_name),
+                seq(
+                    optional(field('name', $._class_name)),
+                    optional($.virtual_specifier),
+                    optional($.base_class_clause),
+                    field('body', $.field_declaration_list)
+                )
+            )
+        )),
+
     }
 });
-
-function commaSep(rule) {
-    return optional(commaSep1(rule));
-}
-
-function commaSep1(rule) {
-    return seq(rule, repeat(seq(',', rule)));
-}

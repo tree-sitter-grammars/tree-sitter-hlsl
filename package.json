@@ -1,7 +1,7 @@
 {
-  "name": "tree-sitter-glsl",
-  "version": "0.1.2",
-  "description": "GLSL grammar for tree-sitter (based on tree-sitter-c",
+  "name": "tree-sitter-hlsl",
+  "version": "0.1.0",
+  "description": "HLSL grammar for tree-sitter (based on tree-sitter-c",
   "main": "bindings/node",
   "keywords": [
     "parser",
@@ -10,7 +10,7 @@
   "author": "Stephan Seitz",
   "license": "MIT",
   "dependencies": {
-    "nan": "^2.15.0"
+    "nan": "^2.16.0"
   },
   "devDependencies": {
     "tree-sitter-c": "git://github.com/tree-sitter/tree-sitter-c.git",
@@ -31,7 +31,7 @@
       "file-types": [
         "vert",
         "frag",
-        "glsl"
+        "hlsl"
       ]
     }
   ]

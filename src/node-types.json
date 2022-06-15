@@ -296,6 +296,10 @@
         "named": true
       },
       {
+        "type": "discard_statement",
+        "named": true
+      },
+      {
         "type": "do_statement",
         "named": true
       },
@@ -379,6 +383,10 @@
     "type": "_type_specifier",
     "named": true,
     "subtypes": [
+      {
+        "type": "cbuffer_specifier",
+        "named": true
+      },
       {
         "type": "class_specifier",
         "named": true
@@ -1132,6 +1140,10 @@
           "named": true
         },
         {
+          "type": "discard_statement",
+          "named": true
+        },
+        {
           "type": "do_statement",
           "named": true
         },
@@ -1236,6 +1248,58 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "cbuffer_specifier",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "field_declaration_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_identifier",
+            "named": true
+          },
+          {
+            "type": "template_type",
+            "named": true
+          },
+          {
+            "type": "type_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_declaration",
+          "named": true
+        },
+        {
+          "type": "base_class_clause",
+          "named": true
+        },
+        {
+          "type": "virtual_specifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1913,10 +1977,6 @@
           "named": true
         },
         {
-          "type": "extension_storage_class",
-          "named": true
-        },
-        {
           "type": "field_declaration_list",
           "named": true
         },
@@ -1925,11 +1985,11 @@
           "named": true
         },
         {
-          "type": "layout_specification",
+          "type": "ms_declspec_modifier",
           "named": true
         },
         {
-          "type": "ms_declspec_modifier",
+          "type": "qualifiers",
           "named": true
         },
         {
@@ -2140,6 +2200,11 @@
     }
   },
   {
+    "type": "discard_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "do_statement",
     "named": true,
     "fields": {
@@ -2163,6 +2228,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "entry_point_attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2293,11 +2373,6 @@
     }
   },
   {
-    "type": "extension_storage_class",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "field_declaration",
     "named": true,
     "fields": {
@@ -2353,15 +2428,11 @@
           "named": true
         },
         {
-          "type": "extension_storage_class",
-          "named": true
-        },
-        {
-          "type": "layout_specification",
-          "named": true
-        },
-        {
           "type": "ms_declspec_modifier",
+          "named": true
+        },
+        {
+          "type": "qualifiers",
           "named": true
         },
         {
@@ -3036,15 +3107,15 @@
           "named": true
         },
         {
+          "type": "entry_point_attribute",
+          "named": true
+        },
+        {
           "type": "explicit_function_specifier",
           "named": true
         },
         {
           "type": "field_initializer_list",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         },
         {
@@ -3317,36 +3388,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "layout_qualifiers",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "qualifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "layout_specification",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "layout_qualifiers",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -3817,6 +3858,10 @@
       "required": false,
       "types": [
         {
+          "type": "_expression",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
           "named": true
         },
@@ -3825,11 +3870,11 @@
           "named": true
         },
         {
-          "type": "layout_specification",
+          "type": "ms_declspec_modifier",
           "named": true
         },
         {
-          "type": "ms_declspec_modifier",
+          "type": "qualifiers",
           "named": true
         },
         {
@@ -4818,19 +4863,9 @@
     }
   },
   {
-    "type": "qualifier",
+    "type": "qualifiers",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_expression",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "ref_qualifier",
@@ -6403,35 +6438,11 @@
     "named": false
   },
   {
-    "type": "attribute",
-    "named": false
-  },
-  {
     "type": "auto",
     "named": true
   },
   {
     "type": "break",
-    "named": false
-  },
-  {
-    "type": "buffer",
-    "named": false
-  },
-  {
-    "type": "callableDataEXT",
-    "named": false
-  },
-  {
-    "type": "callableDataInEXT",
-    "named": false
-  },
-  {
-    "type": "callableDataInNV",
-    "named": false
-  },
-  {
-    "type": "callableDataNV",
     "named": false
   },
   {
@@ -6443,7 +6454,7 @@
     "named": false
   },
   {
-    "type": "centroid",
+    "type": "cbuffer",
     "named": false
   },
   {
@@ -6463,7 +6474,7 @@
     "named": false
   },
   {
-    "type": "coherent",
+    "type": "column_major",
     "named": false
   },
   {
@@ -6511,6 +6522,10 @@
     "named": false
   },
   {
+    "type": "discard",
+    "named": false
+  },
+  {
     "type": "do",
     "named": false
   },
@@ -6547,10 +6562,6 @@
     "named": false
   },
   {
-    "type": "flat",
-    "named": false
-  },
-  {
     "type": "for",
     "named": false
   },
@@ -6563,15 +6574,7 @@
     "named": false
   },
   {
-    "type": "highp",
-    "named": false
-  },
-  {
-    "type": "hitAttributeEXT",
-    "named": false
-  },
-  {
-    "type": "hitAttributeNV",
+    "type": "groupshared",
     "named": false
   },
   {
@@ -6595,27 +6598,11 @@
     "named": false
   },
   {
-    "type": "invariant",
-    "named": false
-  },
-  {
-    "type": "layout",
-    "named": false
-  },
-  {
     "type": "literal_suffix",
     "named": true
   },
   {
     "type": "long",
-    "named": false
-  },
-  {
-    "type": "lowp",
-    "named": false
-  },
-  {
-    "type": "mediump",
     "named": false
   },
   {
@@ -6651,7 +6638,7 @@
     "named": false
   },
   {
-    "type": "noperspective",
+    "type": "nointerpolation",
     "named": false
   },
   {
@@ -6679,15 +6666,7 @@
     "named": false
   },
   {
-    "type": "patch",
-    "named": false
-  },
-  {
     "type": "precise",
-    "named": false
-  },
-  {
-    "type": "precision",
     "named": false
   },
   {
@@ -6719,26 +6698,6 @@
     "named": true
   },
   {
-    "type": "rayPayloadEXT",
-    "named": false
-  },
-  {
-    "type": "rayPayloadInEXT",
-    "named": false
-  },
-  {
-    "type": "rayPayloadInNV",
-    "named": false
-  },
-  {
-    "type": "rayPayloadNV",
-    "named": false
-  },
-  {
-    "type": "readonly",
-    "named": false
-  },
-  {
     "type": "register",
     "named": false
   },
@@ -6755,15 +6714,7 @@
     "named": false
   },
   {
-    "type": "sample",
-    "named": false
-  },
-  {
-    "type": "shaderRecordEXT",
-    "named": false
-  },
-  {
-    "type": "shaderRecordNV",
+    "type": "row_major",
     "named": false
   },
   {
@@ -6783,10 +6734,6 @@
     "named": false
   },
   {
-    "type": "smooth",
-    "named": false
-  },
-  {
     "type": "statement_identifier",
     "named": true
   },
@@ -6800,10 +6747,6 @@
   },
   {
     "type": "struct",
-    "named": false
-  },
-  {
-    "type": "subroutine",
     "named": false
   },
   {
@@ -6883,10 +6826,6 @@
     "named": false
   },
   {
-    "type": "varying",
-    "named": false
-  },
-  {
     "type": "virtual",
     "named": false
   },
@@ -6896,10 +6835,6 @@
   },
   {
     "type": "while",
-    "named": false
-  },
-  {
-    "type": "writeonly",
     "named": false
   },
   {
