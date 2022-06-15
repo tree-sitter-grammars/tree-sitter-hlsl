@@ -14,7 +14,7 @@ module.exports = grammar(CPP, {
 
         function_definition: ($, original) => seq(
             optional(
-                $.entry_point_attribute,
+                $.hlsl_attribute,
             )
             , original
         ),
@@ -39,13 +39,6 @@ module.exports = grammar(CPP, {
                     ),
                     original,
                 )
-            ),
-
-        entry_point_attribute: $ =>
-            seq(
-                '[',
-                $._expression,
-                ']',
             ),
 
         field_declaration: ($, original) =>
@@ -100,6 +93,12 @@ module.exports = grammar(CPP, {
                 )
             )
         )),
+
+        hlsl_attribute: $ => seq('[',
+            $._expression,
+            ']'),
+
+        for_statement: ($, original) => seq(optional($.hlsl_attribute), original),
 
     }
 });
