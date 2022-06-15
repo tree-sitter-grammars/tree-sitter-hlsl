@@ -18,8 +18,8 @@
     "tree-sitter-cli": "^0.20.6"
   },
   "scripts": {
-    "test": "tree-sitter test",
-    "test-windows": "tree-sitter test"
+    "test": "tree-sitter test && tree-sitter parse 'test/kajiya/**/*.hlsl' --quiet",
+    "test-windows": "tree-sitter test && tree-sitter parse 'test/kajiya/**/*.hlsl' --quiet"
   },
   "repository": {
     "type": "git",
