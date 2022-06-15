@@ -123,8 +123,7 @@ cbuffer MyBuffer
             (argument_list
               (field_expression
                 (identifier)
-                (field_identifier))))))))
-  (MISSING ";"))
+                (field_identifier)))))))))
 
 ================================================================================
 Attributed fields

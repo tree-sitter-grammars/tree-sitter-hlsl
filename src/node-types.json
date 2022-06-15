@@ -280,6 +280,10 @@
         "named": true
       },
       {
+        "type": "cbuffer_specifier",
+        "named": true
+      },
+      {
         "type": "co_return_statement",
         "named": true
       },
@@ -383,10 +387,6 @@
     "type": "_type_specifier",
     "named": true,
     "subtypes": [
-      {
-        "type": "cbuffer_specifier",
-        "named": true
-      },
       {
         "type": "class_specifier",
         "named": true
@@ -1117,6 +1117,10 @@
         },
         {
           "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "cbuffer_specifier",
           "named": true
         },
         {

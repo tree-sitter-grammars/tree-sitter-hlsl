@@ -3527,74 +3527,65 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "cbuffer_specifier"
+          "name": "struct_specifier"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "struct_specifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "union_specifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "enum_specifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "class_specifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "sized_type_specifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "primitive_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "template_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "dependent_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "placeholder_type_specifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "decltype"
-            },
-            {
-              "type": "PREC_RIGHT",
-              "value": 0,
-              "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "qualified_type_identifier"
-                    },
-                    "named": true,
-                    "value": "qualified_identifier"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_type_identifier"
-                  }
-                ]
+          "type": "SYMBOL",
+          "name": "union_specifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "enum_specifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "class_specifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sized_type_specifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "template_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dependent_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "placeholder_type_specifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "decltype"
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 0,
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "qualified_type_identifier"
+                },
+                "named": true,
+                "value": "qualified_identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_type_identifier"
               }
-            }
-          ]
+            ]
+          }
         }
       ]
     },
@@ -4662,6 +4653,10 @@
         {
           "type": "SYMBOL",
           "name": "discard_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cbuffer_specifier"
         },
         {
           "type": "CHOICE",

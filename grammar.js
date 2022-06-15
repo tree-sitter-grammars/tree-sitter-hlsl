@@ -74,7 +74,7 @@ module.exports = grammar(CPP, {
                 optional(seq(":", $._expression)),
             ),
 
-        _non_case_statement: ($, original) => choice($.discard_statement, original),
+        _non_case_statement: ($, original) => choice($.discard_statement, $.cbuffer_specifier, original),
 
         discard_statement: _ => seq('discard', ';'),
         qualifiers: _ => choice(
@@ -85,11 +85,6 @@ module.exports = grammar(CPP, {
             'uniform',
             'row_major',
             'column_major',
-        ),
-
-        _type_specifier: ($, original) => choice(
-            $.cbuffer_specifier,
-            original
         ),
 
         cbuffer_specifier: $ => prec.right(seq(
