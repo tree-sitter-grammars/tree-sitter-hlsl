@@ -300,3 +300,66 @@ fixed4 frag(v2f v) : SV_Target {
             (number_literal)
             (number_literal)
             (number_literal)))))))
+
+================================================================================
+Decorated if
+================================================================================
+
+
+    [branch]
+    if (is_cleared)
+    {
+        if (pass != 1)
+        {
+            results.x = all_in_light ? 1.0 : 0.0;
+            bWriteResults = true;
+        }
+    }
+    else
+    {
+        results = FFX_DNSR_Shadows_ApplyFilterWithPrecache(did, gtid, stepsize);
+        bWriteResults = true;
+    }
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (if_statement
+    (hlsl_attribute
+      (identifier))
+    (condition_clause
+      (identifier))
+    (compound_statement
+      (if_statement
+        (condition_clause
+          (binary_expression
+            (identifier)
+            (number_literal)))
+        (compound_statement
+          (expression_statement
+            (conditional_expression
+              (assignment_expression
+                (field_expression
+                  (identifier)
+                  (field_identifier))
+                (identifier))
+              (number_literal)
+              (number_literal)))
+          (expression_statement
+            (assignment_expression
+              (identifier)
+              (true))))))
+    (compound_statement
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (call_expression
+            (identifier)
+            (argument_list
+              (identifier)
+              (identifier)
+              (identifier)))))
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (true))))))

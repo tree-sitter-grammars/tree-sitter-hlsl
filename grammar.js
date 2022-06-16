@@ -79,6 +79,8 @@ module.exports = grammar(CPP, {
 
         _non_case_statement: ($, original) => choice($.discard_statement, $.cbuffer_specifier, original),
 
+        if_statement: ($, original) => seq(optional($.hlsl_attribute), original),
+
         discard_statement: _ => seq('discard', ';'),
         qualifiers: _ => choice(
             'nointerpolation',

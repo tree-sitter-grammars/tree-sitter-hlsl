@@ -3203,6 +3203,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "hlsl_attribute",
+          "named": true
+        }
+      ]
     }
   },
   {
