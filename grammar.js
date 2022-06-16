@@ -64,8 +64,10 @@ module.exports = grammar(CPP, {
                     )
                 ),
                 original,
-                optional(seq(":", $._expression)),
+                optional($.semantics),
             ),
+
+        semantics: $ => seq(":", $._expression),
 
         _non_case_statement: ($, original) => choice($.discard_statement, $.cbuffer_specifier, original),
 

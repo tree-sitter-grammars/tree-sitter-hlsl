@@ -3866,10 +3866,6 @@
       "required": false,
       "types": [
         {
-          "type": "_expression",
-          "named": true
-        },
-        {
           "type": "attribute_declaration",
           "named": true
         },
@@ -3883,6 +3879,10 @@
         },
         {
           "type": "qualifiers",
+          "named": true
+        },
+        {
+          "type": "semantics",
           "named": true
         },
         {
@@ -5010,6 +5010,21 @@
         },
         {
           "type": "initializer_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "semantics",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
           "named": true
         }
       ]

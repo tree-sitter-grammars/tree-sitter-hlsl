@@ -4583,17 +4583,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ":"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_expression"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "semantics"
             },
             {
               "type": "BLANK"
@@ -12467,6 +12458,19 @@
       },
       "named": true,
       "value": "namespace_identifier"
+    },
+    "semantics": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        }
+      ]
     },
     "discard_statement": {
       "type": "SEQ",

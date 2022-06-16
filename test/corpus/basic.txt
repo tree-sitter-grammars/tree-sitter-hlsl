@@ -27,15 +27,18 @@ void main(uint2 px: SV_DispatchThreadID, uint2 px_within_group: SV_GroupThreadID
         (parameter_declaration
           (type_identifier)
           (identifier)
-          (identifier))
+          (semantics
+            (identifier)))
         (parameter_declaration
           (type_identifier)
           (identifier)
-          (identifier))
+          (semantics
+            (identifier)))
         (parameter_declaration
           (type_identifier)
           (identifier)
-          (identifier))))
+          (semantics
+            (identifier)))))
     (compound_statement
       (for_statement
         (declaration
