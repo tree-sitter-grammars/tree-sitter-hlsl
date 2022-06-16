@@ -3018,6 +3018,10 @@
           "named": true
         },
         {
+          "type": "semantics",
+          "named": true
+        },
+        {
           "type": "throw_specifier",
           "named": true
         },
@@ -5024,7 +5028,7 @@
       "required": true,
       "types": [
         {
-          "type": "_expression",
+          "type": "identifier",
           "named": true
         }
       ]

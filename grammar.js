@@ -53,6 +53,14 @@ module.exports = grammar(CPP, {
                 original,
             ),
 
+        function_declarator: $ => prec.left(1,
+            seq(
+                field('declarator', $._declarator),
+                field('parameters', $.parameter_list),
+                repeat($.attribute_specifier),
+                optional($.semantics),
+            )),
+
         parameter_declaration: ($, original) =>
             seq(
                 repeat(
@@ -67,7 +75,7 @@ module.exports = grammar(CPP, {
                 optional($.semantics),
             ),
 
-        semantics: $ => seq(":", $._expression),
+        semantics: $ => seq(":", $.identifier),
 
         _non_case_statement: ($, original) => choice($.discard_statement, $.cbuffer_specifier, original),
 
