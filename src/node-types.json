@@ -272,6 +272,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "attributed_statement",
+        "named": true
+      },
+      {
         "type": "break_statement",
         "named": true
       },
@@ -1541,10 +1545,6 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "concept_definition",
           "named": true
         },
@@ -1669,11 +1669,7 @@
         "required": false,
         "types": [
           {
-            "type": "declaration",
-            "named": true
-          },
-          {
-            "type": "expression_statement",
+            "type": "init_statement",
             "named": true
           }
         ]
@@ -2029,10 +2025,6 @@
         },
         {
           "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
           "named": true
         },
         {
@@ -2815,6 +2807,16 @@
           }
         ]
       },
+      "initializer": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "init_statement",
+            "named": true
+          }
+        ]
+      },
       "right": {
         "multiple": false,
         "required": true,
@@ -2875,6 +2877,16 @@
     "type": "for_statement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_statement",
+            "named": true
+          }
+        ]
+      },
       "condition": {
         "multiple": false,
         "required": false,
@@ -2919,13 +2931,9 @@
       }
     },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
-        {
-          "type": "_statement",
-          "named": true
-        },
         {
           "type": "hlsl_attribute",
           "named": true
@@ -3050,6 +3058,10 @@
         "types": [
           {
             "type": "compound_statement",
+            "named": true
+          },
+          {
+            "type": "try_statement",
             "named": true
           }
         ]
@@ -3247,6 +3259,33 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "init_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "alias_declaration",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "expression_statement",
+          "named": true
+        },
+        {
+          "type": "type_definition",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -4250,10 +4289,6 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "concept_definition",
           "named": true
         },
@@ -4354,10 +4389,6 @@
         },
         {
           "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
           "named": true
         },
         {
@@ -4553,10 +4584,6 @@
           "named": true
         },
         {
-          "type": "attributed_statement",
-          "named": true
-        },
-        {
           "type": "concept_definition",
           "named": true
         },
@@ -4682,10 +4709,6 @@
         },
         {
           "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
           "named": true
         },
         {
@@ -5644,10 +5667,6 @@
         },
         {
           "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "attributed_statement",
           "named": true
         },
         {
