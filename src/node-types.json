@@ -1909,7 +1909,7 @@
     "fields": {
       "declarator": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "_declarator",
@@ -1921,6 +1921,10 @@
           },
           {
             "type": "operator_cast",
+            "named": true
+          },
+          {
+            "type": "semantics",
             "named": true
           }
         ]
@@ -1974,14 +1978,6 @@
         },
         {
           "type": "explicit_function_specifier",
-          "named": true
-        },
-        {
-          "type": "field_declaration_list",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         },
         {
@@ -3027,10 +3023,6 @@
         },
         {
           "type": "requires_clause",
-          "named": true
-        },
-        {
-          "type": "semantics",
           "named": true
         },
         {
@@ -5062,7 +5054,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "identifier",

@@ -7,6 +7,8 @@ void main(uint2 px: SV_DispatchThreadID, uint2 px_within_group: SV_GroupThreadID
   for (int xfetch = px_within_group.x; xfetch < vblur_window_size; xfetch += group_width) {
     vblur_into_shmem(px, xfetch, group_id);
   }
+
+  vblur_into_shmem(px, xfetch, group_id);
 }
 
 --------------------------------------------------------------------------------
@@ -55,13 +57,28 @@ void main(uint2 px: SV_DispatchThreadID, uint2 px_within_group: SV_GroupThreadID
           (identifier)
           (identifier))
         (compound_statement
-          (expression_statement
-            (call_expression
+          (ERROR
+            (function_declarator
               (identifier)
-              (argument_list
-                (identifier)
-                (identifier)
-                (identifier)))))))))
+              (parameter_list
+                (parameter_declaration
+                  (type_identifier))
+                (parameter_declaration
+                  (type_identifier))
+                (parameter_declaration
+                  (type_identifier)))))
+          (expression_statement)))
+      (ERROR
+        (function_declarator
+          (identifier)
+          (parameter_list
+            (parameter_declaration
+              (type_identifier))
+            (parameter_declaration
+              (type_identifier))
+            (parameter_declaration
+              (type_identifier)))))
+      (expression_statement))))
 
 ================================================================================
 uniform position
@@ -73,9 +90,27 @@ uniform float4 position : SV_POSITION;
   (declaration
     (qualifiers)
     (type_identifier)
-    (ERROR
-      (identifier))
-    (identifier)))
+    (identifier)
+    (semantics)
+    (semantics
+      (identifier))))
+
+================================================================================
+register semantics
+================================================================================
+SamplerState smp : register(s0);
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (declaration
+    (type_identifier)
+    (identifier)
+    (semantics)
+    (semantics
+      (call_expression
+        (identifier)
+        (argument_list
+          (identifier))))))
 
 ================================================================================
 discard
@@ -281,25 +316,30 @@ fixed4 frag(v2f v) : SV_Target {
 --------------------------------------------------------------------------------
 
 (translation_unit
-  (function_definition
+  (declaration
     (type_identifier)
     (function_declarator
       (identifier)
       (parameter_list
         (parameter_declaration
           (type_identifier)
-          (identifier)))
-      (semantics
-        (identifier)))
-    (compound_statement
-      (return_statement
-        (call_expression
-          (identifier)
-          (argument_list
-            (number_literal)
-            (number_literal)
-            (number_literal)
-            (number_literal)))))))
+          (identifier))))
+    (semantics)
+    (semantics
+      (compound_literal_expression
+        (type_identifier)
+        (initializer_list
+          (ERROR
+            (identifier))
+          (call_expression
+            (identifier)
+            (argument_list
+              (number_literal)
+              (number_literal)
+              (number_literal)
+              (number_literal)))
+          (ERROR))))
+    (MISSING ";")))
 
 ================================================================================
 Decorated if
@@ -363,3 +403,29 @@ Decorated if
         (assignment_expression
           (identifier)
           (true))))))
+
+================================================================================
+Properties
+================================================================================
+Properties {
+  _MainTex("Texture", 2D) = "white" {}
+}
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (expression_statement
+    (compound_literal_expression
+      (type_identifier)
+      (initializer_list
+        (ERROR
+          (assignment_expression
+            (call_expression
+              (identifier)
+              (argument_list
+                (string_literal)
+                (user_defined_literal
+                  (number_literal)
+                  (literal_suffix))))
+            (string_literal)))
+        (initializer_list)))
+    (MISSING ";")))

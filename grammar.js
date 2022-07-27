@@ -19,27 +19,26 @@ module.exports = grammar(CPP, {
             , original
         ),
 
-        declaration: ($, original) =>
-            seq(
-                repeat(
-                    choice(
-                        'in',
-                        'out',
-                        'inout',
-                        $.qualifiers,
-                    )
-                ),
+        declaration: $ => seq(
+            repeat(
                 choice(
-                    seq(
-                        $.identifier,
-                        //optional(seq(":", $._expression)),
-                        $.field_declaration_list,
-                        optional($.identifier),
-                        ";"
-                    ),
-                    original,
+                    'in',
+                    'out',
+                    'inout',
+                    $.qualifiers,
                 )
             ),
+            $._declaration_specifiers,
+            commaSep1(field('declarator', choice(
+                seq($._declarator, alias(optional(seq(':', $._expression)), $.semantics)),
+                $.init_declarator
+            ))),
+            ';'
+        ),
+
+        _declarator: (_, original) => prec.right(1,
+            original,
+        ),
 
         field_declaration: ($, original) =>
             seq(
@@ -53,13 +52,10 @@ module.exports = grammar(CPP, {
                 original,
             ),
 
-        function_declarator: $ => prec.left(1,
-            seq(
-                field('declarator', $._declarator),
-                field('parameters', $.parameter_list),
-                repeat($.attribute_specifier),
-                optional($.semantics),
-            )),
+        //function_declarator: ($, original) => prec.left(seq(
+            //original,
+            //optional($.semantics),
+        //)),
 
         parameter_declaration: ($, original) =>
             seq(
@@ -114,3 +110,7 @@ module.exports = grammar(CPP, {
 
     }
 });
+
+function commaSep1(rule) {
+    return seq(rule, repeat(seq(',', rule)))
+}
