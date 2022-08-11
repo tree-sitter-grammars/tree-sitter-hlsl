@@ -36,10 +36,6 @@ module.exports = grammar(CPP, {
             ';'
         ),
 
-        _declarator: (_, original) => prec.right(1,
-            original,
-        ),
-
         field_declaration: ($, original) =>
             seq(
                 repeat(prec(2, choice(

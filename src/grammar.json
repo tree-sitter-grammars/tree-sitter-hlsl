@@ -2310,66 +2310,62 @@
       ]
     },
     "_declarator": {
-      "type": "PREC_RIGHT",
-      "value": 1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "attributed_declarator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "pointer_declarator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "function_declarator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "array_declarator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "parenthesized_declarator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "identifier"
-              }
-            ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "reference_declarator"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "qualified_identifier"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "template_function"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "operator_name"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "destructor_name"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "structured_binding_declarator"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "attributed_declarator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "pointer_declarator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "function_declarator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "array_declarator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "parenthesized_declarator"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "reference_declarator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "template_function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "operator_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "destructor_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "structured_binding_declarator"
+        }
+      ]
     },
     "_field_declarator": {
       "type": "CHOICE",
