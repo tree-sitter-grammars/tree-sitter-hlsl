@@ -28,7 +28,7 @@ module.exports = grammar(CPP, {
         declaration: $ => seq(
             $._declaration_specifiers,
             commaSep1(field('declarator', choice(
-                seq($._declarator, alias(optional(seq(':', $._expression)), $.semantics)),
+                seq($._declarator, optional(alias(seq(':', $._expression), $.semantics))),
                 $.init_declarator
             ))),
             ';'
