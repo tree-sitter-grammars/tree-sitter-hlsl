@@ -21,10 +21,8 @@ module.exports = grammar(CPP, {
             , original
         ),
         function_declarator: ($, original) => seq(
-            seq(
-                original,
-                optional($.semantics)
-            )
+            original,
+            optional($.semantics)
         ),
 
         declaration: $ => seq(
