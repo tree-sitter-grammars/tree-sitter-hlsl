@@ -3030,6 +3030,10 @@
           "named": true
         },
         {
+          "type": "semantics",
+          "named": true
+        },
+        {
           "type": "throw_specifier",
           "named": true
         },

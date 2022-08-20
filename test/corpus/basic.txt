@@ -308,30 +308,25 @@ fixed4 frag(v2f v) : SV_Target {
 --------------------------------------------------------------------------------
 
 (translation_unit
-  (declaration
+  (function_definition
     (type_identifier)
     (function_declarator
       (identifier)
       (parameter_list
         (parameter_declaration
           (type_identifier)
-          (identifier))))
-    (semantics)
-    (semantics
-      (compound_literal_expression
-        (type_identifier)
-        (initializer_list
-          (ERROR
-            (identifier))
-          (call_expression
-            (identifier)
-            (argument_list
-              (number_literal)
-              (number_literal)
-              (number_literal)
-              (number_literal)))
-          (ERROR))))
-    (MISSING ";")))
+          (identifier)))
+      (semantics
+        (identifier)))
+    (compound_statement
+      (return_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (number_literal)
+            (number_literal)
+            (number_literal)
+            (number_literal)))))))
 
 ================================================================================
 Decorated if
@@ -529,7 +524,7 @@ float4 VSMain(in  VSInput input,
 --------------------------------------------------------------------------------
 
 (translation_unit
-  (declaration
+  (function_definition
     (attribute_declaration
       (attribute
         (identifier)
@@ -558,21 +553,18 @@ float4 VSMain(in  VSInput input,
           (type_identifier)
           (identifier)
           (semantics
-            (identifier)))))
-    (semantics)
-    (semantics
-      (compound_literal_expression
-        (type_identifier)
-        (initializer_list
-          (assignment_expression
+            (identifier))))
+      (semantics
+        (identifier)))
+    (compound_statement
+      (expression_statement
+        (assignment_expression
+          (identifier)
+          (field_expression
             (identifier)
-            (field_expression
-              (identifier)
-              (field_identifier)))
-          (MISSING "}")))))
-  (return_statement
-    (identifier))
-  (ERROR))
+            (field_identifier))))
+      (return_statement
+        (identifier)))))
 
 ================================================================================
 static method

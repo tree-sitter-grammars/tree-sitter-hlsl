@@ -6,6 +6,8 @@ module.exports = grammar(CPP, {
     conflicts: ($, original) => original.concat([
         [$.function_definition, $.declaration],
         [$.declaration],
+        [$.function_declarator],
+        [$._declaration_specifiers, $.parameter_declaration],
         [/*$.template_function,*/ $.template_type, $._expression],
     ]),
 
@@ -17,6 +19,12 @@ module.exports = grammar(CPP, {
                 $.hlsl_attribute,
             )
             , original
+        ),
+        function_declarator: ($, original) => seq(
+            seq(
+                original,
+                optional($.semantics)
+            )
         ),
 
         declaration: $ => seq(
