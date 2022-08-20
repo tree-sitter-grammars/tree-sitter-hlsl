@@ -1,11 +1,11 @@
 {
   "name": "tree-sitter-hlsl",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "HLSL grammar for tree-sitter (based on tree-sitter-c",
   "main": "bindings/node",
   "keywords": [
     "parser",
-    "glsl"
+    "hlsl"
   ],
   "author": "Stephan Seitz",
   "license": "MIT",
@@ -23,14 +23,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/theHamsta/tree-sitter-glsl.git"
+    "url": "git://github.com/theHamsta/tree-sitter-hlsl.git"
   },
   "tree-sitter": [
     {
       "scope": "source.cpp",
       "file-types": [
-        "vert",
-        "frag",
         "hlsl"
       ]
     }
