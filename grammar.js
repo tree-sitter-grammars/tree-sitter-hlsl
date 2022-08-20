@@ -6,6 +6,7 @@ module.exports = grammar(CPP, {
     conflicts: ($, original) => original.concat([
         [$.function_definition, $.declaration],
         [$.declaration],
+        [$._declaration_specifiers, $.parameter_declaration],
         [/*$.template_function,*/ $.template_type, $._expression],
     ]),
 
@@ -39,18 +40,18 @@ module.exports = grammar(CPP, {
         field_declaration: ($, original) =>
             seq(
                 repeat(prec(2, choice(
-                    $.attribute_declaration,
                     'in',
                     'out',
                     'inout',
                     $.qualifiers,
+                    $._declaration_modifiers,
                 ))),
                 original,
             ),
 
         //function_declarator: ($, original) => prec.left(seq(
-            //original,
-            //optional($.semantics),
+        //original,
+        //optional($.semantics),
         //)),
 
         parameter_declaration: ($, original) =>
@@ -61,6 +62,7 @@ module.exports = grammar(CPP, {
                         'out',
                         'inout',
                         $.qualifiers,
+                        $._declaration_modifiers,
                     )
                 ),
                 original,

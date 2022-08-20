@@ -514,3 +514,62 @@ void main(uint entry_idx: SV_DispatchThreadID) {
             (identifier)
             (identifier))
           (identifier))))))
+
+================================================================================
+DXC mapping example
+================================================================================
+[[vk::location(1)]]
+float4 VSMain(in  VSInput input,
+              [[vk::location(2)]]
+              in  float4  tex     : TEXCOORD,
+              out float4  pos     : SV_Position) : TEXCOORD {
+  pos = input.pos;
+  return tex;
+}
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (declaration
+    (attribute_declaration
+      (attribute
+        (identifier)
+        (identifier)
+        (argument_list
+          (number_literal))))
+    (type_identifier)
+    (function_declarator
+      (identifier)
+      (parameter_list
+        (parameter_declaration
+          (type_identifier)
+          (identifier))
+        (parameter_declaration
+          (attribute_declaration
+            (attribute
+              (identifier)
+              (identifier)
+              (argument_list
+                (number_literal))))
+          (type_identifier)
+          (identifier)
+          (semantics
+            (identifier)))
+        (parameter_declaration
+          (type_identifier)
+          (identifier)
+          (semantics
+            (identifier)))))
+    (semantics)
+    (semantics
+      (compound_literal_expression
+        (type_identifier)
+        (initializer_list
+          (assignment_expression
+            (identifier)
+            (field_expression
+              (identifier)
+              (field_identifier)))
+          (MISSING "}")))))
+  (return_statement
+    (identifier))
+  (ERROR))

@@ -4280,10 +4280,6 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "attribute_declaration"
-                },
-                {
                   "type": "STRING",
                   "value": "in"
                 },
@@ -4298,6 +4294,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "qualifiers"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_declaration_modifiers"
                 }
               ]
             }
@@ -4573,6 +4573,10 @@
               {
                 "type": "SYMBOL",
                 "name": "qualifiers"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_declaration_modifiers"
               }
             ]
           }
@@ -12830,6 +12834,10 @@
     ],
     [
       "declaration"
+    ],
+    [
+      "_declaration_specifiers",
+      "parameter_declaration"
     ],
     [
       "template_type",
