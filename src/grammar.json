@@ -12768,10 +12768,6 @@
       "declaration"
     ],
     [
-      "_declaration_specifiers",
-      "parameter_declaration"
-    ],
-    [
       "template_type",
       "_expression"
     ]

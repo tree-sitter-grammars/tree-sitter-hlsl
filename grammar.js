@@ -6,7 +6,6 @@ module.exports = grammar(CPP, {
     conflicts: ($, original) => original.concat([
         [$.function_definition, $.declaration],
         [$.declaration],
-        [$._declaration_specifiers, $.parameter_declaration],
         [/*$.template_function,*/ $.template_type, $._expression],
     ]),
 
