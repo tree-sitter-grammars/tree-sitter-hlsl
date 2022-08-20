@@ -21,14 +21,6 @@ module.exports = grammar(CPP, {
         ),
 
         declaration: $ => seq(
-            repeat(
-                choice(
-                    'in',
-                    'out',
-                    'inout',
-                    $.qualifiers,
-                )
-            ),
             $._declaration_specifiers,
             commaSep1(field('declarator', choice(
                 seq($._declarator, alias(optional(seq(':', $._expression)), $.semantics)),
@@ -37,34 +29,16 @@ module.exports = grammar(CPP, {
             ';'
         ),
 
-        field_declaration: ($, original) =>
-            seq(
-                repeat(prec(2, choice(
-                    'in',
-                    'out',
-                    'inout',
-                    $.qualifiers,
-                    $._declaration_modifiers,
-                ))),
-                original,
-            ),
+        _declaration_modifiers: ($, original) => choice(
+            'in',
+            'out',
+            'inout',
+            $.qualifiers,
+            original),
 
-        //function_declarator: ($, original) => prec.left(seq(
-        //original,
-        //optional($.semantics),
-        //)),
 
         parameter_declaration: ($, original) =>
             seq(
-                repeat(
-                    choice(
-                        'in',
-                        'out',
-                        'inout',
-                        $.qualifiers,
-                        $._declaration_modifiers,
-                    )
-                ),
                 original,
                 optional($.semantics),
             ),

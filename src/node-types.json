@@ -2855,6 +2855,10 @@
           "named": true
         },
         {
+          "type": "qualifiers",
+          "named": true
+        },
+        {
           "type": "storage_class_specifier",
           "named": true
         },
@@ -3129,6 +3133,10 @@
         },
         {
           "type": "ms_declspec_modifier",
+          "named": true
+        },
+        {
+          "type": "qualifiers",
           "named": true
         },
         {
@@ -3760,6 +3768,10 @@
           "named": true
         },
         {
+          "type": "qualifiers",
+          "named": true
+        },
+        {
           "type": "storage_class_specifier",
           "named": true
         },
@@ -3838,6 +3850,10 @@
         },
         {
           "type": "ms_declspec_modifier",
+          "named": true
+        },
+        {
+          "type": "qualifiers",
           "named": true
         },
         {
@@ -5461,6 +5477,10 @@
           "named": true
         },
         {
+          "type": "qualifiers",
+          "named": true
+        },
+        {
           "type": "storage_class_specifier",
           "named": true
         },
@@ -6117,6 +6137,10 @@
         },
         {
           "type": "ms_declspec_modifier",
+          "named": true
+        },
+        {
+          "type": "qualifiers",
           "named": true
         },
         {

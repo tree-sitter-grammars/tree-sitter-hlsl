@@ -573,3 +573,39 @@ float4 VSMain(in  VSInput input,
   (return_statement
     (identifier))
   (ERROR))
+
+================================================================================
+static method
+================================================================================
+
+struct OcclusionScreenRayMarch {
+    static OcclusionScreenRayMarch create(
+        float2 raymarch_start_uv
+    ) {
+        OcclusionScreenRayMarch res;
+        return res;
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (struct_specifier
+    (type_identifier)
+    (field_declaration_list
+      (function_definition
+        (storage_class_specifier)
+        (type_identifier)
+        (function_declarator
+          (field_identifier)
+          (parameter_list
+            (parameter_declaration
+              (type_identifier)
+              (identifier))))
+        (compound_statement
+          (declaration
+            (type_identifier)
+            (identifier))
+          (return_statement
+            (identifier))))))
+  (MISSING ";"))
