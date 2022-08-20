@@ -585,7 +585,7 @@ struct OcclusionScreenRayMarch {
         OcclusionScreenRayMarch res;
         return res;
     }
-}
+};
 
 --------------------------------------------------------------------------------
 
@@ -607,5 +607,4 @@ struct OcclusionScreenRayMarch {
             (type_identifier)
             (identifier))
           (return_statement
-            (identifier))))))
-  (MISSING ";"))
+            (identifier)))))))
