@@ -63,6 +63,7 @@ module.exports = grammar(CPP, {
             'uniform',
             'row_major',
             'column_major',
+            'globallycoherent',
         ),
 
         cbuffer_specifier: $ => prec.right(seq(

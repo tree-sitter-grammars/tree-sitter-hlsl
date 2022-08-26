@@ -6650,6 +6650,10 @@
     "named": false
   },
   {
+    "type": "globallycoherent",
+    "named": false
+  },
+  {
     "type": "goto",
     "named": false
   },

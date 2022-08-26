@@ -12532,6 +12532,10 @@
         {
           "type": "STRING",
           "value": "column_major"
+        },
+        {
+          "type": "STRING",
+          "value": "globallycoherent"
         }
       ]
     },
