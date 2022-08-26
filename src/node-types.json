@@ -6538,6 +6538,10 @@
     "named": false
   },
   {
+    "type": "centroid",
+    "named": false
+  },
+  {
     "type": "class",
     "named": false
   },
@@ -6682,6 +6686,18 @@
     "named": false
   },
   {
+    "type": "line",
+    "named": false
+  },
+  {
+    "type": "lineadj",
+    "named": false
+  },
+  {
+    "type": "linear",
+    "named": false
+  },
+  {
     "type": "literal_suffix",
     "named": true
   },
@@ -6726,6 +6742,10 @@
     "named": false
   },
   {
+    "type": "noperspective",
+    "named": false
+  },
+  {
     "type": "null",
     "named": true
   },
@@ -6747,6 +6767,10 @@
   },
   {
     "type": "override",
+    "named": false
+  },
+  {
+    "type": "point",
     "named": false
   },
   {
@@ -6802,6 +6826,10 @@
     "named": false
   },
   {
+    "type": "sample",
+    "named": false
+  },
+  {
     "type": "shared",
     "named": false
   },
@@ -6815,6 +6843,10 @@
   },
   {
     "type": "sizeof",
+    "named": false
+  },
+  {
+    "type": "snorm",
     "named": false
   },
   {
@@ -6855,6 +6887,14 @@
   },
   {
     "type": "throw",
+    "named": false
+  },
+  {
+    "type": "triangle",
+    "named": false
+  },
+  {
+    "type": "triangleadj",
     "named": false
   },
   {
@@ -6899,6 +6939,10 @@
   },
   {
     "type": "union",
+    "named": false
+  },
+  {
+    "type": "unorm",
     "named": false
   },
   {

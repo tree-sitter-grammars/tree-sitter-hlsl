@@ -12507,10 +12507,6 @@
       "members": [
         {
           "type": "STRING",
-          "value": "nointerpolation"
-        },
-        {
-          "type": "STRING",
           "value": "precise"
         },
         {
@@ -12536,6 +12532,54 @@
         {
           "type": "STRING",
           "value": "globallycoherent"
+        },
+        {
+          "type": "STRING",
+          "value": "centroid"
+        },
+        {
+          "type": "STRING",
+          "value": "noperspective"
+        },
+        {
+          "type": "STRING",
+          "value": "nointerpolation"
+        },
+        {
+          "type": "STRING",
+          "value": "sample"
+        },
+        {
+          "type": "STRING",
+          "value": "linear"
+        },
+        {
+          "type": "STRING",
+          "value": "snorm"
+        },
+        {
+          "type": "STRING",
+          "value": "unorm"
+        },
+        {
+          "type": "STRING",
+          "value": "point"
+        },
+        {
+          "type": "STRING",
+          "value": "line"
+        },
+        {
+          "type": "STRING",
+          "value": "triangleadj"
+        },
+        {
+          "type": "STRING",
+          "value": "lineadj"
+        },
+        {
+          "type": "STRING",
+          "value": "triangle"
         }
       ]
     },

@@ -56,7 +56,6 @@ module.exports = grammar(CPP, {
 
         discard_statement: _ => seq('discard', ';'),
         qualifiers: _ => choice(
-            'nointerpolation',
             'precise',
             'shared',
             'groupshared',
@@ -64,6 +63,18 @@ module.exports = grammar(CPP, {
             'row_major',
             'column_major',
             'globallycoherent',
+            'centroid',
+            'noperspective',
+            'nointerpolation',
+            'sample',
+            'linear',
+            'snorm',
+            'unorm',
+            'point',
+            'line',
+            'triangleadj',
+            'lineadj',
+            'triangle',
         ),
 
         cbuffer_specifier: $ => prec.right(seq(
