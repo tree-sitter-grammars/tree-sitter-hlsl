@@ -3148,6 +3148,10 @@
           "named": true
         },
         {
+          "type": "try_statement",
+          "named": true
+        },
+        {
           "type": "type_qualifier",
           "named": true
         },
@@ -5781,6 +5785,10 @@
       "types": [
         {
           "type": "catch_clause",
+          "named": true
+        },
+        {
+          "type": "field_initializer_list",
           "named": true
         }
       ]
