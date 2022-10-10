@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16'
-      - name: Update C parser
+      - name: Update CPP parser
         run: npm update
       - name: Install dependencies
         run: npm ci
