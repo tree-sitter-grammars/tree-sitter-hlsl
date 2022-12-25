@@ -1,6 +1,6 @@
 [package]
 name = "tree-sitter-hlsl"
-description = "GLSL grammar for the tree-sitter parsing library"
+description = "HLSL grammar for the tree-sitter parsing library"
 version = "0.1.2"
 keywords = ["incremental", "parsing", "hlsl"]
 categories = ["parsing", "text-editors"]
