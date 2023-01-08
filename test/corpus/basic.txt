@@ -400,18 +400,22 @@ Properties {
 --------------------------------------------------------------------------------
 
 (translation_unit
-  (ERROR
-    (type_identifier)
-    (assignment_expression
-      (call_expression
-        (identifier)
-        (argument_list
-          (string_literal)
-          (user_defined_literal
-            (number_literal)
-            (literal_suffix))))
-      (string_literal))
-    (raw_string_content)))
+  (expression_statement
+    (compound_literal_expression
+      (type_identifier)
+      (initializer_list
+        (ERROR
+          (assignment_expression
+            (call_expression
+              (identifier)
+              (argument_list
+                (string_literal)
+                (user_defined_literal
+                  (number_literal)
+                  (literal_suffix))))
+            (string_literal)))
+        (initializer_list)))
+    (MISSING ";")))
 
 ================================================================================
 Blur
