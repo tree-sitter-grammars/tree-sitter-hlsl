@@ -856,11 +856,8 @@
         "type": "PREC",
         "value": -1,
         "content": {
-          "type": "REPEAT1",
-          "content": {
-            "type": "PATTERN",
-            "value": ".|\\\\\\r?\\n"
-          }
+          "type": "PATTERN",
+          "value": "\\S(.|\\\\\\r?\\n)*"
         }
       }
     },
@@ -943,7 +940,7 @@
       "members": [
         {
           "type": "PREC",
-          "value": 14,
+          "value": 15,
           "content": {
             "type": "SEQ",
             "members": [
@@ -983,7 +980,7 @@
     },
     "preproc_unary_expression": {
       "type": "PREC_LEFT",
-      "value": 13,
+      "value": 14,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1025,7 +1022,7 @@
     },
     "preproc_call_expression": {
       "type": "PREC",
-      "value": 14,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1104,7 +1101,7 @@
       "members": [
         {
           "type": "PREC_LEFT",
-          "value": 10,
+          "value": 11,
           "content": {
             "type": "SEQ",
             "members": [
@@ -1137,7 +1134,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 10,
+          "value": 11,
           "content": {
             "type": "SEQ",
             "members": [
@@ -1170,7 +1167,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 11,
+          "value": 12,
           "content": {
             "type": "SEQ",
             "members": [
@@ -1203,7 +1200,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 11,
+          "value": 12,
           "content": {
             "type": "SEQ",
             "members": [
@@ -1236,7 +1233,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 11,
+          "value": 12,
           "content": {
             "type": "SEQ",
             "members": [
@@ -1632,7 +1629,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 9,
+          "value": 10,
           "content": {
             "type": "SEQ",
             "members": [
@@ -1665,7 +1662,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 9,
+          "value": 10,
           "content": {
             "type": "SEQ",
             "members": [
@@ -4904,6 +4901,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "offsetof_expression"
+            },
+            {
+              "type": "SYMBOL",
               "name": "generic_expression"
             },
             {
@@ -4957,6 +4958,10 @@
             {
               "type": "SYMBOL",
               "name": "parenthesized_expression"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "gnu_asm_expression"
             }
           ]
         },
@@ -5270,7 +5275,7 @@
     },
     "pointer_expression": {
       "type": "PREC_LEFT",
-      "value": 12,
+      "value": 13,
       "content": {
         "type": "SEQ",
         "members": [
@@ -5307,7 +5312,7 @@
       "members": [
         {
           "type": "PREC_LEFT",
-          "value": 13,
+          "value": 14,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5349,7 +5354,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 13,
+          "value": 14,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5388,7 +5393,7 @@
       "members": [
         {
           "type": "PREC_LEFT",
-          "value": 10,
+          "value": 11,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5421,7 +5426,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 10,
+          "value": 11,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5454,7 +5459,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 11,
+          "value": 12,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5487,7 +5492,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 11,
+          "value": 12,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5520,7 +5525,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 11,
+          "value": 12,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5916,7 +5921,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 9,
+          "value": 10,
           "content": {
             "type": "SEQ",
             "members": [
@@ -5949,7 +5954,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 9,
+          "value": 10,
           "content": {
             "type": "SEQ",
             "members": [
@@ -6215,7 +6220,7 @@
     },
     "update_expression": {
       "type": "PREC_RIGHT",
-      "value": 13,
+      "value": 14,
       "content": {
         "type": "CHOICE",
         "members": [
@@ -6284,7 +6289,7 @@
     },
     "cast_expression": {
       "type": "PREC",
-      "value": 12,
+      "value": 13,
       "content": {
         "type": "SEQ",
         "members": [
@@ -6447,9 +6452,55 @@
         ]
       }
     },
+    "offsetof_expression": {
+      "type": "PREC",
+      "value": 9,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "offsetof"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "FIELD",
+                "name": "type",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "type_descriptor"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "FIELD",
+                "name": "member",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_field_identifier"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "generic_expression": {
       "type": "PREC",
-      "value": 14,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -6529,7 +6580,7 @@
     },
     "subscript_expression": {
       "type": "PREC",
-      "value": 16,
+      "value": 17,
       "content": {
         "type": "SEQ",
         "members": [
@@ -6574,7 +6625,7 @@
       "members": [
         {
           "type": "PREC",
-          "value": 14,
+          "value": 15,
           "content": {
             "type": "SEQ",
             "members": [
@@ -6615,6 +6666,472 @@
                 "type": "SYMBOL",
                 "name": "argument_list"
               }
+            }
+          ]
+        }
+      ]
+    },
+    "gnu_asm_expression": {
+      "type": "PREC",
+      "value": 15,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "asm"
+              },
+              {
+                "type": "STRING",
+                "value": "__asm__"
+              }
+            ]
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "gnu_asm_qualifier"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "("
+          },
+          {
+            "type": "FIELD",
+            "name": "assembly_code",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "string_literal"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "concatenated_string"
+                }
+              ]
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "output_operands",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "gnu_asm_output_operand_list"
+                    }
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "FIELD",
+                            "name": "input_operands",
+                            "content": {
+                              "type": "SYMBOL",
+                              "name": "gnu_asm_input_operand_list"
+                            }
+                          },
+                          {
+                            "type": "CHOICE",
+                            "members": [
+                              {
+                                "type": "SEQ",
+                                "members": [
+                                  {
+                                    "type": "FIELD",
+                                    "name": "clobbers",
+                                    "content": {
+                                      "type": "SYMBOL",
+                                      "name": "gnu_asm_clobber_list"
+                                    }
+                                  },
+                                  {
+                                    "type": "CHOICE",
+                                    "members": [
+                                      {
+                                        "type": "FIELD",
+                                        "name": "goto_labels",
+                                        "content": {
+                                          "type": "SYMBOL",
+                                          "name": "gnu_asm_goto_list"
+                                        }
+                                      },
+                                      {
+                                        "type": "BLANK"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "BLANK"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": ")"
+          }
+        ]
+      }
+    },
+    "gnu_asm_qualifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "volatile"
+        },
+        {
+          "type": "STRING",
+          "value": "inline"
+        },
+        {
+          "type": "STRING",
+          "value": "goto"
+        }
+      ]
+    },
+    "gnu_asm_output_operand_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "operand",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "gnu_asm_output_operand"
+                  }
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "operand",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "gnu_asm_output_operand"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "gnu_asm_output_operand": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "["
+                },
+                {
+                  "type": "FIELD",
+                  "name": "symbol",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "]"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "constraint",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "gnu_asm_input_operand_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "operand",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "gnu_asm_input_operand"
+                  }
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "operand",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "gnu_asm_input_operand"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "gnu_asm_input_operand": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "["
+                },
+                {
+                  "type": "FIELD",
+                  "name": "symbol",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "]"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "constraint",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "gnu_asm_clobber_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "register",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "string_literal"
+                  }
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "register",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "string_literal"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "gnu_asm_goto_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "label",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "label",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "identifier"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
             }
           ]
         }
@@ -6692,7 +7209,7 @@
           "members": [
             {
               "type": "PREC",
-              "value": 15,
+              "value": 16,
               "content": {
                 "type": "SEQ",
                 "members": [
@@ -6739,7 +7256,7 @@
           "members": [
             {
               "type": "PREC",
-              "value": 15,
+              "value": 16,
               "content": {
                 "type": "SEQ",
                 "members": [
@@ -8024,7 +8541,7 @@
         },
         {
           "type": "PREC",
-          "value": 14,
+          "value": 15,
           "content": {
             "type": "SEQ",
             "members": [
@@ -10603,7 +11120,7 @@
     },
     "co_await_expression": {
       "type": "PREC_LEFT",
-      "value": 13,
+      "value": 14,
       "content": {
         "type": "SEQ",
         "members": [
@@ -10628,7 +11145,7 @@
     },
     "new_expression": {
       "type": "PREC_RIGHT",
-      "value": 15,
+      "value": 16,
       "content": {
         "type": "SEQ",
         "members": [
@@ -13313,6 +13830,9 @@
     [
       "_declaration_modifiers",
       "attributed_statement"
+    ],
+    [
+      "enum_specifier"
     ],
     [
       "template_function",
