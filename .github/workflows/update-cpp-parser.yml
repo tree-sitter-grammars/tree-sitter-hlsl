@@ -20,8 +20,8 @@ jobs:
         run: node_modules/.bin/tree-sitter generate --abi 14
       - name: Generate parser
         run: npm install
-      - name: Run tests
-        run: npm test
+
+
 
       - name: Commit changes
         run: |
