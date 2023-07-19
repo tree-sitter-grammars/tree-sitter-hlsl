@@ -160,10 +160,6 @@
         "named": true
       },
       {
-        "type": "nullptr",
-        "named": true
-      },
-      {
         "type": "number_literal",
         "named": true
       },
@@ -1398,8 +1394,12 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "character",
+          "named": true
+        },
         {
           "type": "escape_sequence",
           "named": true
@@ -3846,6 +3846,32 @@
     }
   },
   {
+    "type": "macro_type_specifier",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_descriptor",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "ms_based_modifier",
     "named": true,
     "fields": {},
@@ -4081,6 +4107,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "null",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "offsetof_expression",
@@ -4762,6 +4793,122 @@
     }
   },
   {
+    "type": "preproc_elifdef",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "preproc_elif",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_statement",
+          "named": true
+        },
+        {
+          "type": "_type_specifier",
+          "named": true
+        },
+        {
+          "type": "alias_declaration",
+          "named": true
+        },
+        {
+          "type": "concept_definition",
+          "named": true
+        },
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "linkage_specification",
+          "named": true
+        },
+        {
+          "type": "namespace_alias_definition",
+          "named": true
+        },
+        {
+          "type": "namespace_definition",
+          "named": true
+        },
+        {
+          "type": "preproc_call",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
+          "type": "preproc_function_def",
+          "named": true
+        },
+        {
+          "type": "preproc_if",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_include",
+          "named": true
+        },
+        {
+          "type": "static_assert_declaration",
+          "named": true
+        },
+        {
+          "type": "template_declaration",
+          "named": true
+        },
+        {
+          "type": "template_instantiation",
+          "named": true
+        },
+        {
+          "type": "type_definition",
+          "named": true
+        },
+        {
+          "type": "using_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "preproc_else",
     "named": true,
     "fields": {},
@@ -5066,6 +5213,10 @@
         "types": [
           {
             "type": "preproc_elif",
+            "named": true
+          },
+          {
+            "type": "preproc_elifdef",
             "named": true
           },
           {
@@ -5610,6 +5761,10 @@
         {
           "type": "escape_sequence",
           "named": true
+        },
+        {
+          "type": "string_content",
+          "named": true
         }
       ]
     }
@@ -6094,10 +6249,6 @@
       "required": false,
       "types": [
         {
-          "type": "_statement",
-          "named": true
-        },
-        {
           "type": "_type_specifier",
           "named": true
         },
@@ -6106,7 +6257,35 @@
           "named": true
         },
         {
+          "type": "attributed_statement",
+          "named": true
+        },
+        {
+          "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "case_statement",
+          "named": true
+        },
+        {
+          "type": "co_return_statement",
+          "named": true
+        },
+        {
+          "type": "co_yield_statement",
+          "named": true
+        },
+        {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
           "type": "concept_definition",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
           "named": true
         },
         {
@@ -6114,7 +6293,35 @@
           "named": true
         },
         {
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "expression_statement",
+          "named": true
+        },
+        {
+          "type": "for_range_loop",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
           "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "goto_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "labeled_statement",
           "named": true
         },
         {
@@ -6154,7 +6361,15 @@
           "named": true
         },
         {
+          "type": "return_statement",
+          "named": true
+        },
+        {
           "type": "static_assert_declaration",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
           "named": true
         },
         {
@@ -6166,11 +6381,23 @@
           "named": true
         },
         {
+          "type": "throw_statement",
+          "named": true
+        },
+        {
+          "type": "try_statement",
+          "named": true
+        },
+        {
           "type": "type_definition",
           "named": true
         },
         {
           "type": "using_declaration",
+          "named": true
+        },
+        {
+          "type": "while_statement",
           "named": true
         }
       ]
@@ -6225,7 +6452,55 @@
         "required": true,
         "types": [
           {
-            "type": "_type_specifier",
+            "type": "class_specifier",
+            "named": true
+          },
+          {
+            "type": "decltype",
+            "named": true
+          },
+          {
+            "type": "dependent_type",
+            "named": true
+          },
+          {
+            "type": "enum_specifier",
+            "named": true
+          },
+          {
+            "type": "macro_type_specifier",
+            "named": true
+          },
+          {
+            "type": "placeholder_type_specifier",
+            "named": true
+          },
+          {
+            "type": "primitive_type",
+            "named": true
+          },
+          {
+            "type": "qualified_identifier",
+            "named": true
+          },
+          {
+            "type": "sized_type_specifier",
+            "named": true
+          },
+          {
+            "type": "struct_specifier",
+            "named": true
+          },
+          {
+            "type": "template_type",
+            "named": true
+          },
+          {
+            "type": "type_identifier",
+            "named": true
+          },
+          {
+            "type": "union_specifier",
             "named": true
           }
         ]
@@ -6670,6 +6945,14 @@
     "named": false
   },
   {
+    "type": "#elifdef",
+    "named": false
+  },
+  {
+    "type": "#elifndef",
+    "named": false
+  },
+  {
     "type": "#else",
     "named": false
   },
@@ -6866,6 +7149,10 @@
     "named": false
   },
   {
+    "type": "NULL",
+    "named": false
+  },
+  {
     "type": "R\"",
     "named": false
   },
@@ -7016,6 +7303,10 @@
   {
     "type": "centroid",
     "named": false
+  },
+  {
+    "type": "character",
+    "named": true
   },
   {
     "type": "class",
@@ -7226,6 +7517,10 @@
     "named": false
   },
   {
+    "type": "noreturn",
+    "named": false
+  },
+  {
     "type": "not",
     "named": false
   },
@@ -7234,12 +7529,8 @@
     "named": false
   },
   {
-    "type": "null",
-    "named": true
-  },
-  {
     "type": "nullptr",
-    "named": true
+    "named": false
   },
   {
     "type": "number_literal",
@@ -7364,6 +7655,10 @@
   {
     "type": "static_assert",
     "named": false
+  },
+  {
+    "type": "string_content",
+    "named": true
   },
   {
     "type": "struct",
