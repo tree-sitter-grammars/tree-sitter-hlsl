@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "tree_sitter_glsl_binding",
+      "target_name": "tree_sitter_hlsl_binding",
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "src"
