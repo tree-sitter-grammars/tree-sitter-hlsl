@@ -107,11 +107,37 @@ SamplerState smp : register(s0);
 ================================================================================
 discard
 ================================================================================
-discard;
+
+float4 PS( PS_INPUT input) : SV_Target
+{
+    if(input.r >= 0.999998f)
+        discard;
+    return result;
+}
 --------------------------------------------------------------------------------
 
 (translation_unit
-  (discard_statement))
+  (function_definition
+    (type_identifier)
+    (function_declarator
+      (identifier)
+      (parameter_list
+        (parameter_declaration
+          (type_identifier)
+          (identifier)))
+      (semantics
+        (identifier)))
+    (compound_statement
+      (if_statement
+        (condition_clause
+          (binary_expression
+            (field_expression
+              (identifier)
+              (field_identifier))
+            (number_literal)))
+        (discard_statement))
+      (return_statement
+        (identifier)))))
 
 ================================================================================
 Packing
@@ -125,29 +151,33 @@ cbuffer MyBuffer
 --------------------------------------------------------------------------------
 
 (translation_unit
-  (cbuffer_specifier
+  (function_definition
     (type_identifier)
-    (field_declaration_list
-      (field_declaration
+    (identifier)
+    (compound_statement
+      (declaration
         (type_identifier)
-        (field_identifier)
-        (bitfield_clause
+        (identifier)
+        (semantics)
+        (semantics
           (call_expression
             (identifier)
             (argument_list
               (identifier)))))
-      (field_declaration
+      (declaration
         (type_identifier)
-        (field_identifier)
-        (bitfield_clause
+        (identifier)
+        (semantics)
+        (semantics
           (call_expression
             (identifier)
             (argument_list
               (identifier)))))
-      (field_declaration
+      (declaration
         (type_identifier)
-        (field_identifier)
-        (bitfield_clause
+        (identifier)
+        (semantics)
+        (semantics
           (call_expression
             (identifier)
             (argument_list
@@ -364,32 +394,33 @@ Decorated if
             (number_literal)))
         (compound_statement
           (expression_statement
-            (conditional_expression
-              (assignment_expression
-                (field_expression
-                  (identifier)
-                  (field_identifier))
-                (identifier))
-              (number_literal)
-              (number_literal)))
+            (assignment_expression
+              (field_expression
+                (identifier)
+                (field_identifier))
+              (conditional_expression
+                (identifier)
+                (number_literal)
+                (number_literal))))
           (expression_statement
             (assignment_expression
               (identifier)
               (true))))))
-    (compound_statement
-      (expression_statement
-        (assignment_expression
-          (identifier)
-          (call_expression
+    (else_clause
+      (compound_statement
+        (expression_statement
+          (assignment_expression
             (identifier)
-            (argument_list
+            (call_expression
               (identifier)
-              (identifier)
-              (identifier)))))
-      (expression_statement
-        (assignment_expression
-          (identifier)
-          (true))))))
+              (argument_list
+                (identifier)
+                (identifier)
+                (identifier)))))
+        (expression_statement
+          (assignment_expression
+            (identifier)
+            (true)))))))
 
 ================================================================================
 Properties
@@ -409,11 +440,13 @@ Properties {
             (call_expression
               (identifier)
               (argument_list
-                (string_literal)
+                (string_literal
+                  (string_content))
                 (user_defined_literal
                   (number_literal)
                   (literal_suffix))))
-            (string_literal)))
+            (string_literal
+              (string_content))))
         (initializer_list)))
     (MISSING ";")))
 
