@@ -435,19 +435,19 @@ Properties {
     (compound_literal_expression
       (type_identifier)
       (initializer_list
-        (ERROR
-          (assignment_expression
-            (call_expression
-              (identifier)
-              (argument_list
-                (string_literal
-                  (string_content))
-                (user_defined_literal
-                  (number_literal)
-                  (literal_suffix))))
+        (assignment_expression
+          (call_expression
+            (identifier)
+            (argument_list
+              (string_literal
+                (string_content))
+              (user_defined_literal
+                (number_literal)
+                (literal_suffix))))
+          (ERROR
             (string_literal
-              (string_content))))
-        (initializer_list)))
+              (string_content)))
+          (initializer_list))))
     (MISSING ";")))
 
 ================================================================================
