@@ -501,7 +501,8 @@ void vblur_into_shmem(int2 dst_px, uint xfetch, uint2 group_id) {
         (assignment_expression
           (subscript_expression
             (identifier)
-            (identifier))
+            (subscript_argument_list
+              (identifier)))
           (call_expression
             (identifier)
             (argument_list
@@ -540,7 +541,8 @@ void main(uint entry_idx: SV_DispatchThreadID) {
         (assignment_expression
           (subscript_expression
             (identifier)
-            (identifier))
+            (subscript_argument_list
+              (identifier)))
           (identifier))))))
 
 ================================================================================
