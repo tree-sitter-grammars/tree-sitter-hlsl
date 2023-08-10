@@ -5967,6 +5967,25 @@
     }
   },
   {
+    "type": "subscript_argument_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        },
+        {
+          "type": "initializer_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "subscript_designator",
     "named": true,
     "fields": {},
@@ -5995,16 +6014,12 @@
           }
         ]
       },
-      "index": {
+      "indices": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "_expression",
-            "named": true
-          },
-          {
-            "type": "initializer_list",
+            "type": "subscript_argument_list",
             "named": true
           }
         ]
@@ -6220,6 +6235,10 @@
         "types": [
           {
             "type": "field_identifier",
+            "named": true
+          },
+          {
+            "type": "operator_name",
             "named": true
           }
         ]
@@ -6592,6 +6611,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "attribute_specifier",
+          "named": true
+        },
         {
           "type": "type_qualifier",
           "named": true
@@ -7327,7 +7350,23 @@
     "named": false
   },
   {
+    "type": "__extension__",
+    "named": false
+  },
+  {
     "type": "__fastcall",
+    "named": false
+  },
+  {
+    "type": "__forceinline",
+    "named": false
+  },
+  {
+    "type": "__inline",
+    "named": false
+  },
+  {
+    "type": "__inline__",
     "named": false
   },
   {
