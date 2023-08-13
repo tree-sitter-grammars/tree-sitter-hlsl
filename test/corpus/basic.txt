@@ -441,9 +441,7 @@ Properties {
             (argument_list
               (string_literal
                 (string_content))
-              (user_defined_literal
-                (number_literal)
-                (literal_suffix))))
+              (number_literal)))
           (ERROR
             (string_literal
               (string_content)))
