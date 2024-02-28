@@ -1,18 +1,28 @@
 name: CI
+
 on:
   push:
     branches: [master]
+    paths:
+      - grammar.js
+      - src/**
+      - bindings/**
+      - binding.gyp
   pull_request:
-    branches: [master]
+    paths:
+      - grammar.js
+      - src/**
+      - bindings/**
+      - binding.gyp
+
 jobs:
   build:
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: tree-sitter/parser-setup-action@v1.1
         with:
-          node-version: '16'
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm test
+          node-version: ${{vars.NODE_VERSION}}
+      - uses: tree-sitter/parser-test-action@v1.2
+        with:
+          test-library: true
