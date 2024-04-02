@@ -10,9 +10,10 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-      - uses: tree-sitter/parser-setup-action@v1.1
+      - uses: actions/checkout@v4
+      - uses: tree-sitter/setup-action@v1
         with:
-          node-version: ${{vars.NODE_VERSION}}
+          install-lib: false
       - uses: tree-sitter/parser-test-action@v1.2
         with:
           test-library: true
