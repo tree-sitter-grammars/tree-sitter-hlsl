@@ -1,12 +1,9 @@
+#include "tree_sitter/alloc.h"
 #include "tree_sitter/parser.h"
 
 #include <assert.h>
 #include <string.h>
 #include <wctype.h>
-
-#if __STDC_VERSION__ < 201112L
-#define static_assert(cnd, msg) assert(cnd && msg)
-#endif // __STDC_VERSION__ < 201112L
 
 enum TokenType { RAW_STRING_DELIMITER, RAW_STRING_CONTENT };
 
@@ -98,13 +95,18 @@ static bool scan_raw_string_content(Scanner *scanner, TSLexer *lexer) {
 }
 
 void *tree_sitter_hlsl_external_scanner_create() {
-    Scanner *scanner = (Scanner *)calloc(1, sizeof(Scanner));
+    Scanner *scanner = (Scanner *)ts_calloc(1, sizeof(Scanner));
     memset(scanner, 0, sizeof(Scanner));
     return scanner;
 }
 
 bool tree_sitter_hlsl_external_scanner_scan(void *payload, TSLexer *lexer, const bool *valid_symbols) {
     Scanner *scanner = (Scanner *)payload;
+
+    if (valid_symbols[RAW_STRING_DELIMITER] && valid_symbols[RAW_STRING_CONTENT]) {
+        // we're in error recovery
+        return false;
+    }
 
     // No skipping leading whitespace: raw-string grammar is space-sensitive.
     if (valid_symbols[RAW_STRING_DELIMITER]) {
@@ -140,5 +142,5 @@ void tree_sitter_hlsl_external_scanner_deserialize(void *payload, const char *bu
 
 void tree_sitter_hlsl_external_scanner_destroy(void *payload) {
     Scanner *scanner = (Scanner *)payload;
-    free(scanner);
+    ts_free(scanner);
 }
