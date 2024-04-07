@@ -4841,6 +4841,10 @@
             "named": true
           },
           {
+            "type": "preproc_elifdef",
+            "named": true
+          },
+          {
             "type": "preproc_else",
             "named": true
           }
@@ -4998,6 +5002,10 @@
         "types": [
           {
             "type": "preproc_elif",
+            "named": true
+          },
+          {
+            "type": "preproc_elifdef",
             "named": true
           },
           {
@@ -5273,6 +5281,10 @@
         "types": [
           {
             "type": "preproc_elif",
+            "named": true
+          },
+          {
+            "type": "preproc_elifdef",
             "named": true
           },
           {
