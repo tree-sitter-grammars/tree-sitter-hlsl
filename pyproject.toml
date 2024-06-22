@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-hlsl"
 description = "Hlsl grammar for tree-sitter"
-version = "0.1.4"
+version = "0.1.5"
 keywords = ["incremental", "parsing", "tree-sitter", "hlsl"]
 classifiers = [
   "Intended Audience :: Developers",
@@ -22,7 +22,7 @@ readme = "README.md"
 Homepage = "https://github.com/tree-sitter-grammars/tree-sitter-hlsl"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.21"]
+core = ["tree-sitter~=0.22"]
 
 [tool.cibuildwheel]
 build = "cp38-*"

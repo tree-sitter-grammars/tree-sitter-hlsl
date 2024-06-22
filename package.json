@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-hlsl",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "HLSL grammar for tree-sitter (based on tree-sitter-c",
   "main": "bindings/node",
   "types": "bindings/node",
