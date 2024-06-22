@@ -4,11 +4,7 @@ module.exports = grammar(CPP, {
     name: 'hlsl',
 
     conflicts: ($, original) => original.concat([
-        [$.function_definition, $.declaration],
-        [$.declaration],
         [$.function_declarator],
-        [$._declaration_specifiers, $.parameter_declaration],
-        [/*$.template_function,*/ $.template_type, $._expression],
     ]),
 
     rules: {
@@ -28,7 +24,7 @@ module.exports = grammar(CPP, {
         declaration: $ => seq(
             $._declaration_specifiers,
             commaSep1(field('declarator', choice(
-                seq($._declarator, optional(alias(seq(':', $._expression), $.semantics))),
+                seq($._declarator, optional(alias(seq(':', $.expression), $.semantics))),
                 $.init_declarator
             ))),
             ';'
@@ -92,7 +88,7 @@ module.exports = grammar(CPP, {
         )),
 
         hlsl_attribute: $ => seq('[',
-            $._expression,
+            $.expression,
             ']'),
 
         for_statement: ($, original) => seq(optional($.hlsl_attribute), original),
