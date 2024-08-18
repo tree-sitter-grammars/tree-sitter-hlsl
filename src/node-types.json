@@ -7564,6 +7564,10 @@
     "named": false
   },
   {
+    "type": "_Nonnull",
+    "named": false
+  },
+  {
     "type": "_Noreturn",
     "named": false
   },
@@ -7573,6 +7577,10 @@
   },
   {
     "type": "__alignof__",
+    "named": false
+  },
+  {
+    "type": "__asm",
     "named": false
   },
   {
