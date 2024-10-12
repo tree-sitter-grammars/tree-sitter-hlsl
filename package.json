@@ -19,8 +19,8 @@
   "author": "Stephan Seitz",
   "license": "MIT",
   "dependencies": {
-    "node-addon-api": "^7.1.0",
-    "node-gyp-build": "^4.8.0"
+    "node-addon-api": "^8.2.1",
+    "node-gyp-build": "^4.8.2"
   },
   "peerDependencies": {
     "tree-sitter": "^0.21.0"
@@ -33,8 +33,8 @@
   "devDependencies": {
     "tree-sitter-c": "git://github.com/tree-sitter/tree-sitter-c.git",
     "tree-sitter-cpp": "git://github.com/tree-sitter/tree-sitter-cpp.git",
-    "tree-sitter-cli": "^0.22.2",
-    "prebuildify": "^6.0.0"
+    "tree-sitter-cli": "^0.24.3",
+    "prebuildify": "^6.0.1"
   },
   "scripts": {
     "test": "tree-sitter test",
@@ -45,13 +45,5 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/tree-sitter-grammars/tree-sitter-hlsl.git"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.cpp",
-      "file-types": [
-        "hlsl"
-      ]
-    }
-  ]
+  }
 }
