@@ -14,6 +14,11 @@ jobs:
       - uses: tree-sitter/setup-action@v1
         with:
           install-lib: false
-      - uses: tree-sitter/parser-test-action@v1.2
+      - name: Run tests
+        uses: tree-sitter/parser-test-action@v2
         with:
-          test-library: true
+          test-rust: true
+          test-node: true
+          test-python: true
+          test-go: true
+          test-swift: true
