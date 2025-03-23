@@ -1,32 +1,32 @@
 //! This crate provides hlsl language support for the [tree-sitter][] parsing library.
 //!
-//! Typically, you will use the [language][language func] function to add this language to a
+//! Typically, you will use the [LANGUAGE_RUST][] constant to add this language to a
 //! tree-sitter [Parser][], and then use the parser to parse some code:
 //!
 //! ```
+//! use tree_sitter_hlsl::LANGUAGE_HLSL;
+//!
 //! let code = "";
 //! let mut parser = tree_sitter::Parser::new();
-//! parser.set_language(&tree_sitter_hlsl::language()).expect("Error loading hlsl grammar");
+//! parser
+//!     .set_language(&LANGUAGE_HLSL.into())
+//!     .expect("Error loading HLSL language");
 //! let tree = parser.parse(code, None).unwrap();
 //! ```
 //!
-//! [Language]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Language.html
-//! [language func]: fn.language.html
 //! [Parser]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Parser.html
 //! [tree-sitter]: https://tree-sitter.github.io/
 
-use tree_sitter::Language;
+use tree_sitter_language::LanguageFn;
 
-extern "C" {
-    fn tree_sitter_hlsl() -> Language;
+unsafe extern "C" {
+    fn tree_sitter_hlsl() -> *const ();
 }
 
-/// Get the tree-sitter [Language][] for this grammar.
+/// Get the tree-sitter [LanguageFn][] for this grammar.
 ///
-/// [Language]: https://docs.rs/tree-sitter/*/tree_sitter/struct.Language.html
-pub fn language() -> Language {
-    unsafe { tree_sitter_hlsl() }
-}
+/// [LanguageFn]: https://docs.rs/tree-sitter-language/*/tree_sitter_language/struct.LanguageFn.html
+pub const LANGUAGE_HLSL: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_hlsl) };
 
 /// The content of the [`node-types.json`][] file for this grammar.
 ///
@@ -42,11 +42,13 @@ pub const NODE_TYPES: &str = include_str!("../../src/node-types.json");
 
 #[cfg(test)]
 mod tests {
+    use crate::LANGUAGE_HLSL;
+
     #[test]
     fn test_can_load_grammar() {
         let mut parser = tree_sitter::Parser::new();
         parser
-            .set_language(&super::language())
-            .expect("Error loading hlsl language");
+            .set_language(&LANGUAGE_HLSL.into())
+            .expect("Error loading HLSL language");
     }
 }
