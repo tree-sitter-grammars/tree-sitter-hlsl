@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-hlsl
+module github.com/tree-sitter-grammars/tree-sitter-hlsl
 
 go 1.22
 
