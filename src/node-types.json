@@ -906,16 +906,6 @@
           }
         ]
       },
-      "namespace": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
       "prefix": {
         "multiple": false,
         "required": false,
@@ -2547,97 +2537,6 @@
     }
   },
   {
-    "type": "export_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "alias_declaration",
-          "named": true
-        },
-        {
-          "type": "concept_definition",
-          "named": true
-        },
-        {
-          "type": "declaration",
-          "named": true
-        },
-        {
-          "type": "function_definition",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
-          "named": true
-        },
-        {
-          "type": "namespace_alias_definition",
-          "named": true
-        },
-        {
-          "type": "namespace_definition",
-          "named": true
-        },
-        {
-          "type": "preproc_call",
-          "named": true
-        },
-        {
-          "type": "preproc_def",
-          "named": true
-        },
-        {
-          "type": "preproc_function_def",
-          "named": true
-        },
-        {
-          "type": "preproc_if",
-          "named": true
-        },
-        {
-          "type": "preproc_ifdef",
-          "named": true
-        },
-        {
-          "type": "preproc_include",
-          "named": true
-        },
-        {
-          "type": "statement",
-          "named": true
-        },
-        {
-          "type": "static_assert_declaration",
-          "named": true
-        },
-        {
-          "type": "template_declaration",
-          "named": true
-        },
-        {
-          "type": "template_instantiation",
-          "named": true
-        },
-        {
-          "type": "type_definition",
-          "named": true
-        },
-        {
-          "type": "type_specifier",
-          "named": true
-        },
-        {
-          "type": "using_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "expression_statement",
     "named": true,
     "fields": {},
@@ -3536,11 +3435,6 @@
     }
   },
   {
-    "type": "global_module_fragment_declaration",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "gnu_asm_clobber_list",
     "named": true,
     "fields": {
@@ -3841,56 +3735,6 @@
     }
   },
   {
-    "type": "import_declaration",
-    "named": true,
-    "fields": {
-      "header": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "system_lib_string",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "module_name",
-            "named": true
-          }
-        ]
-      },
-      "partition": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "module_partition",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "attribute_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "init_declarator",
     "named": true,
     "fields": {
@@ -4108,52 +3952,6 @@
     }
   },
   {
-    "type": "lambda_declarator",
-    "named": true,
-    "fields": {
-      "parameters": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "parameter_list",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "attribute_declaration",
-          "named": true
-        },
-        {
-          "type": "noexcept",
-          "named": true
-        },
-        {
-          "type": "requires_clause",
-          "named": true
-        },
-        {
-          "type": "throw_specifier",
-          "named": true
-        },
-        {
-          "type": "trailing_return_type",
-          "named": true
-        },
-        {
-          "type": "type_qualifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "lambda_default_capture",
     "named": true,
     "fields": {}
@@ -4197,7 +3995,7 @@
         "required": false,
         "types": [
           {
-            "type": "lambda_declarator",
+            "type": "abstract_function_declarator",
             "named": true
           }
         ]
@@ -4246,72 +4044,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "module_declaration",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "module_name",
-            "named": true
-          }
-        ]
-      },
-      "partition": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "module_partition",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "attribute_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "module_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "module_partition",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "module_name",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -5910,11 +5642,6 @@
     }
   },
   {
-    "type": "private_module_fragment_declaration",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "pure_virtual_clause",
     "named": true,
     "fields": {}
@@ -6983,10 +6710,6 @@
           "named": true
         },
         {
-          "type": "export_declaration",
-          "named": true
-        },
-        {
           "type": "expression_statement",
           "named": true
         },
@@ -7003,10 +6726,6 @@
           "named": true
         },
         {
-          "type": "global_module_fragment_declaration",
-          "named": true
-        },
-        {
           "type": "goto_statement",
           "named": true
         },
@@ -7015,19 +6734,11 @@
           "named": true
         },
         {
-          "type": "import_declaration",
-          "named": true
-        },
-        {
           "type": "labeled_statement",
           "named": true
         },
         {
           "type": "linkage_specification",
-          "named": true
-        },
-        {
-          "type": "module_declaration",
           "named": true
         },
         {
@@ -7060,10 +6771,6 @@
         },
         {
           "type": "preproc_include",
-          "named": true
-        },
-        {
-          "type": "private_module_fragment_declaration",
           "named": true
         },
         {
@@ -7456,13 +7163,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "attribute_declaration",
-          "named": true
-        },
         {
           "type": "identifier",
           "named": true
@@ -8089,7 +7792,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "compl",
@@ -8160,10 +7864,6 @@
     "named": false
   },
   {
-    "type": "export",
-    "named": false
-  },
-  {
     "type": "extern",
     "named": false
   },
@@ -8208,10 +7908,6 @@
     "named": false
   },
   {
-    "type": "import",
-    "named": false
-  },
-  {
     "type": "in",
     "named": false
   },
@@ -8241,10 +7937,6 @@
   },
   {
     "type": "long",
-    "named": false
-  },
-  {
-    "type": "module",
     "named": false
   },
   {
