@@ -1,16 +1,25 @@
 [package]
 name = "tree-sitter-hlsl"
-description = "HLSL grammar for the tree-sitter parsing library"
+description = "HLSL grammar for tree-sitter"
 version = "0.2.0"
-keywords = ["incremental", "parsing", "hlsl"]
-categories = ["parsing", "text-editors"]
-repository = "https://github.com/theHamsta/tree-sitter-hlsl"
-edition = "2024"
+authors = ["Stephan Seitz"]
 license = "MIT"
-authors = ["tree-sitter-c authors around Max Brunsfeld", "Stephan Seitz"]
+readme = "README.md"
+keywords = ["incremental", "parsing", "tree-sitter", "hlsl"]
+categories = ["parser-implementations", "parsing", "text-editors"]
+repository = "https://github.com/tree-sitter-grammars/tree-sitter-hlsl"
+edition = "2021"
+autoexamples = false
 
 build = "bindings/rust/build.rs"
-include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*"]
+include = [
+  "bindings/rust/*",
+  "grammar.js",
+  "queries/*",
+  "src/*",
+  "tree-sitter.json",
+  "LICENSE",
+]
 
 [lib]
 path = "bindings/rust/lib.rs"
@@ -18,8 +27,8 @@ path = "bindings/rust/lib.rs"
 [dependencies]
 tree-sitter-language = "0.1"
 
-[dev-dependencies]
-tree-sitter = "0.25.3"
-
 [build-dependencies]
-cc = "1.0.73"
+cc = "1.2"
+
+[dev-dependencies]
+tree-sitter = "0.25.6"
