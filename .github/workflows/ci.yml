@@ -3,22 +3,56 @@ name: CI
 on:
   push:
     branches: [master]
+    paths:
+      - grammar.js
+      - src/**
+      - test/**
+      - bindings/**
+      - binding.gyp
   pull_request:
+    paths:
+      - grammar.js
+      - src/**
+      - test/**
+      - bindings/**
+      - binding.gyp
+
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    name: Run tests
-    runs-on: ubuntu-latest
+  test:
+    name: Test parser
+    runs-on: ${{matrix.os}}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14]
     steps:
-      - uses: actions/checkout@v4
-      - uses: tree-sitter/setup-action@v1
-        with:
-          install-lib: false
-      - name: Run tests
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v1
+      - name: Run parser and binding tests
         uses: tree-sitter/parser-test-action@v2
         with:
+          generate: false
           test-rust: true
-          test-node: true
-          test-python: true
-          test-go: true
-          test-swift: true
+      - name: Clone kajiya repository
+        uses: actions/checkout@v4
+        with:
+          path: test/kajiya
+          repository: EmbarkStudios/kajiya
+          sparse-checkout: assets/shaders/
+      - name: Parse sample files
+        uses: tree-sitter/parse-action@v4
+        id: parse-files
+        with:
+          files: test/**/*.hlsl
+      - name: Upload failures artifact
+        uses: actions/upload-artifact@v4
+        if: "!cancelled() && steps.parse-files.outcome == 'failure'"
+        with:
+          name: failures-${{runner.os}}
+          path: ${{steps.parse-files.outputs.failures}}
