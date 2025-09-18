@@ -1,3 +1,0 @@
-[submodule "test/kajiya"]
-	path = test/kajiya
-	url = https://github.com/EmbarkStudios/kajiya.git

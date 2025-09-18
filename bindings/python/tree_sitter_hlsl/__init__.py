@@ -1,4 +1,4 @@
-"Hlsl grammar for tree-sitter"
+"""HLSL grammar for tree-sitter"""
 
 from ._binding import language
 

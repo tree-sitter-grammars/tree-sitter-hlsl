@@ -2,33 +2,36 @@
   "grammars": [
     {
       "name": "hlsl",
-      "camelcase": "Hlsl",
-      "scope": "source.cpp",
-      "path": ".",
+      "camelcase": "HLSL",
+      "title": "HLSL",
+      "scope": "source.hlsl",
       "file-types": [
         "hlsl"
+      ],
+      "injection-regex": "^hlsl$",
+      "class-name": "TreeSitterHLSL",
+      "highlights": [
+        "node_modules/tree-sitter-cpp/queries/highlights.scm"
+      ],
+      "injections": [
+        "node_modules/tree-sitter-cpp/queries/injections.scm"
+      ],
+      "tags": [
+        "node_modules/tree-sitter-cpp/queries/tags.scm"
       ]
     }
   ],
   "metadata": {
     "version": "0.2.0",
     "license": "MIT",
-    "description": "HLSL grammar for tree-sitter (based on tree-sitter-c",
+    "description": "HLSL grammar for tree-sitter",
     "authors": [
       {
         "name": "Stephan Seitz"
       }
     ],
     "links": {
-      "repository": "git://github.com/tree-sitter-grammars/tree-sitter-hlsl.git"
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-hlsl"
     }
-  },
-  "bindings": {
-    "c": true,
-    "go": true,
-    "node": true,
-    "python": true,
-    "rust": true,
-    "swift": true
   }
 }
