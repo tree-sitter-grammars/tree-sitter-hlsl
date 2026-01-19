@@ -5,16 +5,15 @@ module.exports = grammar(CPP, {
 
     conflicts: ($, original) => original.concat([
         [$.function_declarator],
+        [$.hlsl_attribute, $.subscript_designator],
     ]),
 
     rules: {
         _top_level_item: (_, original) => original,
 
         function_definition: ($, original) => seq(
-            optional(
-                $.hlsl_attribute,
-            )
-            , original
+            repeat($.hlsl_attribute),
+            original
         ),
         function_declarator: ($, original) => seq(
             original,
@@ -40,6 +39,7 @@ module.exports = grammar(CPP, {
 
         parameter_declaration: ($, original) =>
             seq(
+                repeat($.hlsl_attribute),
                 original,
                 optional($.semantics),
             ),
@@ -48,7 +48,7 @@ module.exports = grammar(CPP, {
 
         _non_case_statement: ($, original) => choice($.discard_statement, $.cbuffer_specifier, original),
 
-        if_statement: ($, original) => seq(optional($.hlsl_attribute), original),
+        if_statement: ($, original) => seq(repeat($.hlsl_attribute), original),
 
         discard_statement: _ => seq('discard', ';'),
         qualifiers: _ => choice(
@@ -91,7 +91,7 @@ module.exports = grammar(CPP, {
             $.expression,
             ']'),
 
-        for_statement: ($, original) => seq(optional($.hlsl_attribute), original),
+        for_statement: ($, original) => seq(repeat($.hlsl_attribute), original),
 
     }
 });
