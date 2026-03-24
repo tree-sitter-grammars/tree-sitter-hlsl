@@ -635,3 +635,91 @@ struct OcclusionScreenRayMarch {
             (identifier))
           (return_statement
             (identifier)))))))
+
+================================================================================
+Top-level HLSL attributes
+================================================================================
+
+[shader("compute")]
+[numthreads(64, 1, 1)]
+void ClearMaterialCountersCS(uint3 dispatchThreadId : SV_DispatchThreadID) {
+}
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (function_definition
+    (hlsl_attribute
+      (call_expression
+        (identifier)
+        (argument_list
+          (string_literal
+            (string_content)))))
+    (hlsl_attribute
+      (call_expression
+        (identifier)
+        (argument_list
+          (number_literal)
+          (number_literal)
+          (number_literal))))
+    (primitive_type)
+    (function_declarator
+      (identifier)
+      (parameter_list
+        (parameter_declaration
+          (type_identifier)
+          (identifier)
+          (semantics
+            (identifier)))))
+    (compound_statement)))
+
+================================================================================
+Contextual sample identifier
+================================================================================
+
+void f() {
+    MaterialUvSample sample = (MaterialUvSample)0;
+    sample.uvSetIndex = 0u;
+}
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (function_definition
+    (primitive_type)
+    (function_declarator
+      (identifier)
+      (parameter_list))
+    (compound_statement
+      (declaration
+        (type_identifier)
+        (init_declarator
+          (identifier)
+          (cast_expression
+            (type_descriptor
+              (type_identifier))
+            (number_literal))))
+      (expression_statement
+        (assignment_expression
+          (field_expression
+            (identifier)
+            (field_identifier))
+          (number_literal))))))
+
+================================================================================
+Typed UAV format qualifier
+================================================================================
+
+RWTexture2D<unorm float> g_outWorkingEdges;
+
+--------------------------------------------------------------------------------
+
+(translation_unit
+  (declaration
+    (template_type
+      (type_identifier)
+      (template_argument_list
+        (type_descriptor
+          (type_qualifiers)
+          (primitive_type))))
+    (identifier)))
