@@ -1,0 +1,130 @@
+// HLSL grammar for tree-sitter (native DSL).
+// Extends tree-sitter-cpp.
+
+let cpp = inherit("../tree-sitter-cpp/grammar.tsg")
+
+macro comma_sep1(item: rule_t) rule_t {
+    seq(item, repeat(seq(",", item)))
+}
+
+grammar {
+    language: "hlsl",
+    inherits: cpp,
+    // CPP conflicts + [function_declarator].
+    conflicts: [
+        // C
+        [type_specifier, _declarator],
+        [type_specifier, expression],
+        [sized_type_specifier],
+        [attributed_statement],
+        [_declaration_modifiers, attributed_statement],
+        [_declaration_modifiers, using_declaration],
+        [_declaration_modifiers, attributed_statement, using_declaration],
+        [_top_level_item, _top_level_statement],
+        [_block_item, statement],
+        [type_qualifier, extension_expression],
+        // C++
+        [template_function, template_type],
+        [template_function, template_type, expression],
+        [template_function, template_type, qualified_identifier],
+        [template_function, template_type, qualified_identifier, qualified_type_identifier],
+        [template_type, qualified_type_identifier],
+        [qualified_type_identifier, qualified_identifier],
+        [comma_expression, initializer_list],
+        [expression, _declarator],
+        [expression, structured_binding_declarator],
+        [expression, _declarator, type_specifier],
+        [expression, identifier_parameter_pack_expansion],
+        [expression, _lambda_capture_identifier],
+        [expression, _lambda_capture],
+        [expression, structured_binding_declarator, _lambda_capture_identifier],
+        [structured_binding_declarator, _lambda_capture_identifier],
+        [parameter_list, argument_list],
+        [type_specifier, call_expression],
+        [_declaration_specifiers, _constructor_specifiers],
+        [_binary_fold_operator, _fold_operator],
+        [_function_declarator_seq],
+        [type_specifier, sized_type_specifier],
+        [initializer_pair, comma_expression],
+        [expression_statement, _for_statement_body],
+        [init_statement, _for_statement_body],
+        [field_expression, template_method, template_type],
+        [field_expression, template_method],
+        [qualified_field_identifier, template_method, template_type],
+        [type_specifier, template_type, template_function, expression],
+        [splice_type_specifier, splice_expression],
+        // HLSL
+        [function_declarator],
+    ],
+}
+
+override rule function_definition {
+    seq(optional(hlsl_attribute), cpp::function_definition)
+}
+
+override rule function_declarator {
+    seq(cpp::function_declarator, optional(semantics))
+}
+
+override rule declaration {
+    seq(
+        _declaration_specifiers,
+        comma_sep1(field(declarator, choice(
+            seq(_declarator, optional(alias(seq(":", expression), semantics))),
+            init_declarator,
+        ))),
+        ";",
+    )
+}
+
+override rule _declaration_modifiers {
+    choice("in", "out", "inout", qualifiers, cpp::_declaration_modifiers)
+}
+
+override rule parameter_declaration {
+    seq(cpp::parameter_declaration, optional(semantics))
+}
+
+rule semantics { seq(":", identifier) }
+
+override rule _non_case_statement {
+    choice(discard_statement, cbuffer_specifier, cpp::_non_case_statement)
+}
+
+override rule if_statement {
+    seq(optional(hlsl_attribute), cpp::if_statement)
+}
+
+rule discard_statement { seq("discard", ";") }
+
+rule qualifiers {
+    choice(
+        "precise", "shared", "groupshared", "uniform",
+        "row_major", "column_major", "globallycoherent",
+        "centroid", "noperspective", "nointerpolation",
+        "sample", "linear", "snorm", "unorm",
+        "point", "line", "triangleadj", "lineadj", "triangle",
+    )
+}
+
+rule cbuffer_specifier {
+    prec_right(0, seq(
+        "cbuffer",
+        optional(attribute_declaration),
+        choice(
+            field(name, _class_name),
+            seq(
+                optional(field(name, _class_name)),
+                optional(virtual_specifier),
+                optional(base_class_clause),
+                field(body, field_declaration_list),
+            ),
+        ),
+    ))
+}
+
+rule hlsl_attribute { seq("[", expression, "]") }
+
+override rule for_statement {
+    seq(optional(hlsl_attribute), cpp::for_statement)
+}
